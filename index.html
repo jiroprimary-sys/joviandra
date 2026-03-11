@@ -2,26 +2,21 @@
 
 
 
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Jovi Andra | Video Editor</title>
+<title>Jovi Andra | Cinematic Video Editor</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
---bg:#0a0905;
---panel:#12110e;
---text:#f5f0e8;
---accent:#9c7c50;
-}
+/* RESET */
 
 *{
 margin:0;
@@ -30,167 +25,318 @@ box-sizing:border-box;
 }
 
 body{
-background:var(--bg);
-color:var(--text);
-font-family:'Cormorant Garamond',serif;
-line-height:1.6;
+font-family:'Inter',sans-serif;
+background:#070707;
+color:white;
+overflow-x:hidden;
+scroll-behavior:smooth;
 }
 
-/* hero */
+/* BACKGROUND LIGHT EFFECT */
+
+body::before{
+content:"";
+position:fixed;
+top:-20%;
+left:-20%;
+width:140%;
+height:140%;
+background:radial-gradient(circle at 30% 30%,rgba(255,255,255,0.08),transparent 60%);
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:30px;
+padding:12px 28px;
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(20px);
+border-radius:40px;
+z-index:1000;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+opacity:.8;
+}
+
+nav a:hover{
+opacity:1;
+}
+
+/* HERO */
 
 .hero{
 height:100vh;
 display:flex;
-flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
-padding:20px;
+position:relative;
+overflow:hidden;
 }
 
+.hero iframe{
+position:absolute;
+top:50%;
+left:50%;
+width:120vw;
+height:67.5vw;
+min-height:100vh;
+min-width:177vh;
+transform:translate(-50%,-50%);
+pointer-events:none;
+opacity:.35;
+}
+
+.hero-content{
+z-index:2;
+max-width:750px;
+}
+
+/* PREMIUM GRADIENT TEXT */
+
 .hero h1{
-font-family:'Syne';
-font-size:64px;
+font-size:82px;
+letter-spacing:-2px;
+background:linear-gradient(90deg,#ffffff,#cfcfcf,#ffffff);
+-webkit-background-clip:text;
+color:transparent;
+opacity:0;
+transform:translateY(40px);
+animation:intro 1.2s forwards;
 }
 
 .hero p{
-font-size:22px;
-margin-top:10px;
-opacity:.8;
+margin-top:20px;
+opacity:0;
+transform:translateY(40px);
+animation:intro 1.5s forwards;
+font-size:18px;
 }
 
-.stats{
-display:flex;
-gap:40px;
-margin-top:30px;
-font-family:'IBM Plex Mono';
+@keyframes intro{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-.stat span{
-display:block;
-font-size:28px;
-color:var(--accent);
-}
-
-/* container */
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:80px 20px;
-}
-
-.section-title{
-font-family:'Syne';
-font-size:40px;
-margin-bottom:40px;
-}
-
-/* showreel */
-
-.reel iframe{
-width:100%;
-height:520px;
-border:none;
-}
-
-/* projects */
-
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.project{
-background:var(--panel);
-padding:24px;
-border:1px solid rgba(255,255,255,.05);
-transition:.3s;
-}
-
-.project:hover{
-transform:translateY(-5px);
-border-color:var(--accent);
-}
-
-.project h3{
-font-family:'Syne';
-margin-bottom:8px;
-}
-
-/* clients */
-
-.clients{
-display:flex;
-flex-wrap:wrap;
-gap:40px;
-font-family:'IBM Plex Mono';
-opacity:.7;
-}
-
-/* CTA */
-
-.cta{
-text-align:center;
-padding:80px 20px;
-background:var(--panel);
-}
-
-.cta h2{
-font-family:'Syne';
-font-size:36px;
-margin-bottom:10px;
-}
+/* BUTTON */
 
 .btn{
 display:inline-block;
-padding:14px 28px;
-background:var(--accent);
+margin-top:30px;
+padding:14px 34px;
+border-radius:30px;
+background:white;
 color:black;
-font-family:'Syne';
-margin-top:20px;
 text-decoration:none;
+font-weight:600;
+transition:0.3s;
 }
 
-/* footer */
+.btn:hover{
+transform:scale(1.05);
+}
 
-footer{
+/* SECTION */
+
+section{
+padding:120px 10%;
+}
+
+.section-title{
+font-size:44px;
+margin-bottom:60px;
+}
+
+/* SHOWREEL */
+
+.showreel iframe{
+width:100%;
+height:520px;
+border-radius:14px;
+border:0;
+}
+
+/* GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+gap:40px;
+}
+
+/* VIDEO CARD */
+
+.video-card{
+border-radius:14px;
+overflow:hidden;
+background:#111;
+transition:0.45s;
+position:relative;
+}
+
+.video-card:hover{
+transform:scale(1.06);
+box-shadow:0 20px 50px rgba(0,0,0,0.6);
+}
+
+.video-card iframe{
+width:100%;
+height:260px;
+border:0;
+pointer-events:none;
+}
+
+.video-caption{
+padding:20px;
+}
+
+.video-caption h3{
+font-size:18px;
+margin-bottom:8px;
+}
+
+.video-caption p{
+font-size:14px;
+opacity:0.7;
+line-height:1.6;
+}
+
+/* EXPERIENCE */
+
+.timeline{
+display:grid;
+gap:30px;
+}
+
+.timeline div{
+background:#111;
+padding:30px;
+border-radius:14px;
+transition:0.3s;
+}
+
+.timeline div:hover{
+background:#151515;
+}
+
+/* TOOLS */
+
+.tools{
+display:flex;
+flex-wrap:wrap;
+gap:14px;
+}
+
+.tools span{
+background:#1a1a1a;
+padding:10px 18px;
+border-radius:20px;
+font-size:14px;
+}
+
+/* CONTACT */
+
+.contact{
 text-align:center;
-padding:40px;
-opacity:.6;
-font-family:'IBM Plex Mono';
+}
+
+.contact p{
+margin:20px 0;
+opacity:.7;
+}
+
+.contact-links{
+margin-top:20px;
+display:flex;
+justify-content:center;
+gap:30px;
+}
+
+.contact-links a{
+color:white;
+text-decoration:none;
+border-bottom:1px solid rgba(255,255,255,0.3);
+padding-bottom:4px;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:48px;
+}
+
+.grid{
+grid-template-columns:1fr;
+}
+
+.showreel iframe{
+height:260px;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
+
+<!-- NAV -->
+
+<nav>
+<a href="#showreel">Showreel</a>
+<a href="#work">Work</a>
+<a href="#experience">Experience</a>
+<a href="#contact">Contact</a>
+</nav>
 
 <!-- HERO -->
 
 <section class="hero">
 
+<iframe
+src="https://player.vimeo.com/video/1172508905?background=1&autoplay=1&loop=1&muted=1"
+frameborder="0"
+allow="autoplay; fullscreen">
+</iframe>
+
+<div class="hero-content">
+
 <h1>Jovi Andra</h1>
 
-<p>Senior Video Editor • Motion Designer • Retention Specialist</p>
+<p>
+Cinematic Video Editor & Motion Graphic Designer  
+Specialized in Long-Form YouTube Storytelling
+</p>
 
-<div class="stats">
-
-<div class="stat">
-<span>5+</span>
-Years Experience
-</div>
-
-<div class="stat">
-<span>45%</span>
-Engagement Lift
-</div>
-
-<div class="stat">
-<span>2×</span>
-Production Speed
-</div>
+<a href="#showreel" class="btn">Watch Showreel</a>
 
 </div>
 
@@ -198,88 +344,192 @@ Production Speed
 
 <!-- SHOWREEL -->
 
-<div class="container">
+<section id="showreel">
 
-<h2 class="section-title">Showreel</h2>
+<h2 class="section-title reveal">Featured Showreel</h2>
 
-<div class="reel">
+<div class="showreel reveal">
 
-<iframe 
-src="https://www.youtube.com/embed/95FWmz-6EZo"
-width="100%" 
-height="520"
-frameborder="0"
-allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+<iframe
+src="https://player.vimeo.com/video/1172481792"
+allow="autoplay; fullscreen"
 allowfullscreen>
 </iframe>
 
 </div>
 
-</div>
+</section>
 
-<!-- PROJECTS -->
+<!-- WORK -->
 
-<div class="container">
+<section id="work">
 
-<h2 class="section-title">Selected Work</h2>
+<h2 class="section-title reveal">Selected Work</h2>
 
-<div class="projects">
+<div class="grid reveal">
 
-<div class="project">
-<h3>Broadcast Motion Graphics</h3>
-<p>Motion graphics package designed for television broadcast production.</p>
-</div>
+<div class="video-card">
 
-<div class="project">
-<h3>High Retention Social Video</h3>
-<p>Short-form video editing optimized for TikTok and Reels engagement.</p>
-</div>
+<iframe
+data-src="https://player.vimeo.com/video/1172478933?autoplay=1&muted=1&loop=1"
+src="https://player.vimeo.com/video/1172478933">
+</iframe>
 
-<div class="project">
-<h3>Documentary Editing</h3>
-<p>Cinematic editing structure focused on storytelling and pacing.</p>
-</div>
+<div class="video-caption">
 
-</div>
+<h3>Motion Graphic Editing</h3>
 
-</div>
-
-<!-- CLIENTS -->
-
-<div class="container">
-
-<h2 class="section-title">Clients</h2>
-
-<div class="clients">
-
-<div>KompasTV</div>
-<div>Creative Agencies</div>
-<div>Media Studios</div>
-<div>E-commerce Brands</div>
+<p>
+Motion graphic sequence created using After Effects and Premiere Pro to
+enhance storytelling and viewer engagement.
+</p>
 
 </div>
 
 </div>
 
-<!-- CONTACT -->
+<div class="video-card">
 
-<section class="cta">
+<iframe
+data-src="https://player.vimeo.com/video/1172481792?autoplay=1&muted=1&loop=1"
+src="https://player.vimeo.com/video/1172481792">
+</iframe>
 
-<h2>Let’s Create Work People Actually Watch</h2>
+<div class="video-caption">
 
-<p>Available for remote editing and creative collaborations.</p>
+<h3>Long-Form YouTube Editing</h3>
 
-<a class="btn" href="mailto:jiro.primary@gmail.com">
-Contact Me
-</a>
+<p>
+Narrative editing focused on pacing, suspense, and retention
+for long-form YouTube storytelling content.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
-<footer>
+<!-- EXPERIENCE -->
 
-© 2026 Jovi Andra
+<section id="experience">
 
-</footer>
+<h2 class="section-title reveal">Experience</h2>
+
+<div class="timeline reveal">
+
+<div>
+<h3>Graphic Designer</h3>
+<p>Kompas TV</p>
+</div>
+
+<div>
+<h3>Script Writer</h3>
+<p>Global TV</p>
+</div>
+
+<div>
+<h3>Freelance Video Editor</h3>
+<p>Remote Clients Worldwide</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- TOOLS -->
+
+<section>
+
+<h2 class="section-title reveal">Tools</h2>
+
+<div class="tools reveal">
+
+<span>Premiere Pro</span>
+<span>After Effects</span>
+<span>Photoshop</span>
+<span>CapCut</span>
+<span>Sound Design</span>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+<h2 class="section-title reveal">Let's Work Together</h2>
+
+<p class="reveal">
+Available for freelance video editing, motion graphics,
+and long-form YouTube content projects worldwide.
+</p>
+
+<div class="contact-links reveal">
+
+<a href="mailto:your@email.com">Email</a>
+<a href="https://wa.me/yourwhatsapp">WhatsApp</a>
+<a href="https://linkedin.com">LinkedIn</a>
+
+</div>
+
+</section>
+
+<script>
+
+/* SCROLL REVEAL */
+
+function reveal(){
+
+let reveals=document.querySelectorAll(".reveal");
+
+for(let i=0;i<reveals.length;i++){
+
+let windowHeight=window.innerHeight;
+let elementTop=reveals[i].getBoundingClientRect().top;
+let visible=120;
+
+if(elementTop < windowHeight - visible){
+
+reveals[i].classList.add("active");
+
+}
+
+}
+
+}
+
+window.addEventListener("scroll",reveal);
+
+/* NETFLIX HOVER PREVIEW */
+
+const cards=document.querySelectorAll(".video-card");
+
+cards.forEach(card=>{
+
+const iframe=card.querySelector("iframe");
+
+const original=iframe.src;
+const hover=iframe.dataset.src;
+
+card.addEventListener("mouseenter",()=>{
+
+iframe.src=hover;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+iframe.src=original;
+
+});
+
+});
+
+</script>
 
 </body>
 </html>
