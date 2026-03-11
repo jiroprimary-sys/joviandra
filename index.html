@@ -1,0 +1,285 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Jovi Andra | Video Editor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700&family=Cormorant+Garamond:wght@400;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#0a0905;
+--panel:#12110e;
+--text:#f5f0e8;
+--accent:#9c7c50;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+font-family:'Cormorant Garamond',serif;
+line-height:1.6;
+}
+
+/* hero */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+}
+
+.hero h1{
+font-family:'Syne';
+font-size:64px;
+}
+
+.hero p{
+font-size:22px;
+margin-top:10px;
+opacity:.8;
+}
+
+.stats{
+display:flex;
+gap:40px;
+margin-top:30px;
+font-family:'IBM Plex Mono';
+}
+
+.stat span{
+display:block;
+font-size:28px;
+color:var(--accent);
+}
+
+/* container */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:80px 20px;
+}
+
+.section-title{
+font-family:'Syne';
+font-size:40px;
+margin-bottom:40px;
+}
+
+/* showreel */
+
+.reel iframe{
+width:100%;
+height:520px;
+border:none;
+}
+
+/* projects */
+
+.projects{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.project{
+background:var(--panel);
+padding:24px;
+border:1px solid rgba(255,255,255,.05);
+transition:.3s;
+}
+
+.project:hover{
+transform:translateY(-5px);
+border-color:var(--accent);
+}
+
+.project h3{
+font-family:'Syne';
+margin-bottom:8px;
+}
+
+/* clients */
+
+.clients{
+display:flex;
+flex-wrap:wrap;
+gap:40px;
+font-family:'IBM Plex Mono';
+opacity:.7;
+}
+
+/* CTA */
+
+.cta{
+text-align:center;
+padding:80px 20px;
+background:var(--panel);
+}
+
+.cta h2{
+font-family:'Syne';
+font-size:36px;
+margin-bottom:10px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+background:var(--accent);
+color:black;
+font-family:'Syne';
+margin-top:20px;
+text-decoration:none;
+}
+
+/* footer */
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+font-family:'IBM Plex Mono';
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<h1>Jovi Andra</h1>
+
+<p>Senior Video Editor • Motion Designer • Retention Specialist</p>
+
+<div class="stats">
+
+<div class="stat">
+<span>5+</span>
+Years Experience
+</div>
+
+<div class="stat">
+<span>45%</span>
+Engagement Lift
+</div>
+
+<div class="stat">
+<span>2×</span>
+Production Speed
+</div>
+
+</div>
+
+</section>
+
+<!-- SHOWREEL -->
+
+<div class="container">
+
+<h2 class="section-title">Showreel</h2>
+
+<div class="reel">
+
+<iframe 
+src="https://www.youtube.com/embed/95FWmz-6EZo"
+width="100%" 
+height="520"
+frameborder="0"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+allowfullscreen>
+</iframe>
+
+</div>
+
+</div>
+
+<!-- PROJECTS -->
+
+<div class="container">
+
+<h2 class="section-title">Selected Work</h2>
+
+<div class="projects">
+
+<div class="project">
+<h3>Broadcast Motion Graphics</h3>
+<p>Motion graphics package designed for television broadcast production.</p>
+</div>
+
+<div class="project">
+<h3>High Retention Social Video</h3>
+<p>Short-form video editing optimized for TikTok and Reels engagement.</p>
+</div>
+
+<div class="project">
+<h3>Documentary Editing</h3>
+<p>Cinematic editing structure focused on storytelling and pacing.</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- CLIENTS -->
+
+<div class="container">
+
+<h2 class="section-title">Clients</h2>
+
+<div class="clients">
+
+<div>KompasTV</div>
+<div>Creative Agencies</div>
+<div>Media Studios</div>
+<div>E-commerce Brands</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<section class="cta">
+
+<h2>Let’s Create Work People Actually Watch</h2>
+
+<p>Available for remote editing and creative collaborations.</p>
+
+<a class="btn" href="mailto:jiro.primary@gmail.com">
+Contact Me
+</a>
+
+</section>
+
+<footer>
+
+© 2026 Jovi Andra
+
+</footer>
+
+</body>
+</html>
