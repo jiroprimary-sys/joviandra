@@ -4,7 +4,6 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
@@ -32,7 +31,7 @@ overflow-x:hidden;
 scroll-behavior:smooth;
 }
 
-/* PAGE LOADER */
+/* LOADER */
 
 #loader{
 position:fixed;
@@ -40,36 +39,24 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:#000;
+background:#070707;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:2000;
-transition:opacity 1s ease, visibility 1s;
+z-index:9999;
+transition:opacity 1s ease;
 }
 
-.loader-content{
-text-align:center;
-}
-
-.loader-content h1{
+#loader h1{
 font-size:42px;
-letter-spacing:2px;
-margin-bottom:10px;
-}
-
-.loader-content p{
-opacity:.7;
-}
-
-#loader.hidden{
-opacity:0;
-visibility:hidden;
+letter-spacing:3px;
+opacity:.9;
 }
 
 /* CURSOR SPOTLIGHT */
 
-.spotlight{
+body::before{
+content:"";
 position:fixed;
 top:0;
 left:0;
@@ -123,7 +110,7 @@ position:relative;
 overflow:hidden;
 }
 
-.hero iframe{
+.hero-video{
 position:absolute;
 top:50%;
 left:50%;
@@ -134,29 +121,23 @@ min-width:177vh;
 transform:translate(-50%,-50%);
 pointer-events:none;
 opacity:.35;
+transition:transform .4s ease-out,opacity .4s ease-out;
 }
 
 .hero-content{
 z-index:2;
-max-width:720px;
+max-width:700px;
 }
 
 .hero h1{
 font-size:80px;
 letter-spacing:-2px;
-background:linear-gradient(90deg,#fff,#cfcfcf,#fff);
--webkit-background-clip:text;
-color:transparent;
 }
 
 .hero p{
 margin-top:20px;
-font-size:20px;
-opacity:.9;
-line-height:1.5;
+opacity:.85;
 }
-
-/* BUTTON */
 
 .btn{
 display:inline-block;
@@ -167,11 +148,6 @@ background:white;
 color:black;
 text-decoration:none;
 font-weight:600;
-transition:.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
 }
 
 /* SECTION */
@@ -181,7 +157,7 @@ padding:120px 10%;
 }
 
 .section-title{
-font-size:42px;
+font-size:44px;
 margin-bottom:60px;
 }
 
@@ -189,65 +165,110 @@ margin-bottom:60px;
 
 .showreel iframe{
 width:100%;
-height:520px;
-border-radius:14px;
+height:500px;
+border-radius:12px;
 border:0;
 }
 
-/* GRID */
+.showreel-description{
+margin-top:20px;
+max-width:700px;
+opacity:.8;
+font-size:15px;
+line-height:1.7;
+}
+
+/* TRUSTED */
+
+.trusted-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+}
+
+.trusted-box{
+background:#111;
+padding:30px;
+border-radius:12px;
+transition:.3s;
+}
+
+.trusted-box:hover{
+transform:translateY(-6px);
+background:#151515;
+}
+
+/* VIDEO GRID */
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(380px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
 gap:40px;
 }
 
-/* VIDEO CARD */
+/* VIDEO CARDS */
 
-.video-card{
-border-radius:14px;
+.video-wrapper{
+position:relative;
 overflow:hidden;
-background:#111;
-transition:.4s;
-cursor:pointer;
+border-radius:12px;
 }
 
-.video-card:hover{
-transform:scale(1.06);
-box-shadow:0 25px 60px rgba(0,0,0,0.7);
-}
-
-.video-card iframe{
+.video-wrapper iframe{
 width:100%;
 height:260px;
 border:0;
+pointer-events:none;
+transition:transform .6s ease;
 }
 
-.video-caption{
-padding:20px;
+.video-card:hover iframe{
+transform:scale(1.08);
 }
 
-.video-caption h3{
-margin-bottom:8px;
+.play-icon{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+font-size:42px;
+background:rgba(0,0,0,0.5);
+padding:14px 20px;
+border-radius:50%;
+opacity:.8;
+transition:.4s;
+}
+
+.video-card:hover .play-icon{
+opacity:1;
+transform:translate(-50%,-50%) scale(1.2);
+}
+
+.video-info{
+margin-top:12px;
+}
+
+.video-info h3{
 font-size:18px;
 }
 
-.video-caption p{
+.video-info p{
 font-size:14px;
-opacity:.75;
+opacity:.7;
 }
 
-/* SCROLL REVEAL */
+/* APPROACH */
 
-.reveal-video{
-opacity:0;
-transform:translateY(80px) scale(.96);
-transition:all 1.1s cubic-bezier(.22,.61,.36,1);
+.hire-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
 }
 
-.reveal-video.active{
-opacity:1;
-transform:translateY(0) scale(1);
+.hire-box{
+background:#111;
+padding:30px;
+border-radius:12px;
 }
 
 /* EXPERIENCE */
@@ -260,7 +281,7 @@ gap:30px;
 .timeline div{
 background:#111;
 padding:30px;
-border-radius:14px;
+border-radius:12px;
 }
 
 /* TOOLS */
@@ -278,92 +299,58 @@ border-radius:20px;
 font-size:14px;
 }
 
-/* HIRE SECTION */
-
-.hire-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:30px;
-}
-
-.hire-box{
-background:#111;
-padding:30px;
-border-radius:14px;
-}
-
-.hire-box h3{
-margin-bottom:10px;
-}
-
-.hire-box p{
-font-size:14px;
-opacity:.8;
-}
-
 /* CONTACT */
 
 .contact{
 text-align:center;
 }
 
-.contact-links{
-margin-top:20px;
-display:flex;
-justify-content:center;
-gap:30px;
+.contact p{
+margin:20px 0;
+opacity:.7;
 }
 
-.contact-links a{
-color:white;
-text-decoration:none;
-border-bottom:1px solid rgba(255,255,255,0.4);
-padding-bottom:4px;
+/* REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
-/* MOBILE */
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
 
 @media(max-width:768px){
 
-.hero h1{
-font-size:46px;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.showreel iframe{
-height:260px;
-}
+.hero h1{font-size:44px;}
+.grid{grid-template-columns:1fr;}
+.showreel iframe{height:300px;}
 
 }
 
 </style>
-
 </head>
 
 <body>
 
 <div id="loader">
-<div class="loader-content">
 <h1>Jovi Andra</h1>
-<p>Cinematic Video Editor</p>
 </div>
-</div>
-
-<div class="spotlight"></div>
 
 <nav>
 <a href="#showreel">Showreel</a>
 <a href="#work">Work</a>
-<a href="#hire">Hire</a>
 <a href="#contact">Contact</a>
 </nav>
 
 <section class="hero">
 
-<iframe src="https://player.vimeo.com/video/1172508905?background=1&autoplay=1&loop=1&muted=1"></iframe>
+<iframe class="hero-video"
+src="https://player.vimeo.com/video/1172508905?background=1&autoplay=1&loop=1&muted=1">
+</iframe>
 
 <div class="hero-content">
 
@@ -371,7 +358,7 @@ height:260px;
 
 <p>
 Cinematic Video Editor  
-Helping YouTube channels increase viewer retention with story-driven editing
+Specializing in Story-Driven YouTube Content & Viewer Retention
 </p>
 
 <a href="#showreel" class="btn">Watch Showreel</a>
@@ -382,11 +369,41 @@ Helping YouTube channels increase viewer retention with story-driven editing
 
 <section id="showreel">
 
-<h2 class="section-title">Featured Showreel</h2>
+<h2 class="section-title reveal">Featured Showreel</h2>
 
-<div class="showreel reveal-video">
+<div class="showreel reveal">
 
 <iframe src="https://player.vimeo.com/video/1172481792"></iframe>
+
+<p class="showreel-description">
+A cinematic showcase of my editing style including motion graphics,
+story-driven pacing and long-form YouTube storytelling.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title reveal">Trusted Experience</h2>
+
+<div class="trusted-grid reveal">
+
+<div class="trusted-box">
+<h3>Kompas TV</h3>
+<p>Graphic Designer working on broadcast visuals and television graphics.</p>
+</div>
+
+<div class="trusted-box">
+<h3>Global TV</h3>
+<p>Script Writer contributing to television storytelling and production.</p>
+</div>
+
+<div class="trusted-box">
+<h3>Freelance Editor</h3>
+<p>Collaborating remotely with creators on cinematic video projects.</p>
+</div>
 
 </div>
 
@@ -394,105 +411,48 @@ Helping YouTube channels increase viewer retention with story-driven editing
 
 <section id="work">
 
-<h2 class="section-title">Selected Work</h2>
+<h2 class="section-title reveal">Selected Work</h2>
 
-<div class="grid">
+<div class="grid reveal">
 
-<div class="video-card reveal-video">
+<div class="video-card">
 
-<iframe class="scroll-video"
+<div class="video-wrapper">
+
+<iframe
 data-src="https://player.vimeo.com/video/1172478933?autoplay=1&muted=1&loop=1"
-src="https://player.vimeo.com/video/1172478933?muted=1"></iframe>
+src="https://player.vimeo.com/video/1172478933">
+</iframe>
 
-<div class="video-caption">
-<h3>Motion Graphic Editing</h3>
-<p>Dynamic motion graphics designed to enhance storytelling and pacing.</p>
+<div class="play-icon">▶</div>
+
+</div>
+
+<div class="video-info">
+<h3>YouTube Long Form Editing</h3>
+<p>Motion Design / Visual Storytelling</p>
 </div>
 
 </div>
 
-<div class="video-card reveal-video">
+<div class="video-card">
 
-<iframe class="scroll-video"
+<div class="video-wrapper">
+
+<iframe
 data-src="https://player.vimeo.com/video/1172481792?autoplay=1&muted=1&loop=1"
-src="https://player.vimeo.com/video/1172481792?muted=1"></iframe>
+src="https://player.vimeo.com/video/1172481792">
+</iframe>
 
-<div class="video-caption">
-<h3>Long-Form YouTube Editing</h3>
-<p>Story-driven editing focused on audience retention and cinematic pacing.</p>
-</div>
+<div class="play-icon">▶</div>
 
 </div>
 
+<div class="video-info">
+<h3>Cinematic Motion Graphics</h3>
+<p>Story-Driven Editing</p>
 </div>
 
-</section>
-
-<section>
-
-<h2 class="section-title">Experience</h2>
-
-<div class="timeline">
-
-<div>
-<h3>Graphic Designer</h3>
-<p>Kompas TV</p>
-</div>
-
-<div>
-<h3>Script Writer</h3>
-<p>Global TV</p>
-</div>
-
-<div>
-<h3>Freelance Video Editor</h3>
-<p>Remote Clients Worldwide</p>
-</div>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="section-title">Tools</h2>
-
-<div class="tools">
-
-<span>Premiere Pro</span>
-<span>After Effects</span>
-<span>Photoshop</span>
-<span>CapCut</span>
-<span>Sound Design</span>
-
-</div>
-
-</section>
-
-<section id="hire">
-
-<h2 class="section-title">Hire Me in 30 Seconds</h2>
-
-<div class="hire-grid">
-
-<div class="hire-box">
-<h3>Specialty</h3>
-<p>Cinematic YouTube storytelling and motion graphics editing.</p>
-</div>
-
-<div class="hire-box">
-<h3>Services</h3>
-<p>Long-form YouTube editing, motion graphics, pacing optimization.</p>
-</div>
-
-<div class="hire-box">
-<h3>Tools</h3>
-<p>Premiere Pro, After Effects, Photoshop.</p>
-</div>
-
-<div class="hire-box">
-<h3>Availability</h3>
-<p>Available for remote freelance projects worldwide.</p>
 </div>
 
 </div>
@@ -501,69 +461,77 @@ src="https://player.vimeo.com/video/1172481792?muted=1"></iframe>
 
 <section id="contact" class="contact">
 
-<h2 class="section-title">Let's Work Together</h2>
+<h2 class="section-title reveal">Let's Work Together</h2>
 
-<p>Available for freelance editing and YouTube storytelling projects.</p>
+<p class="reveal">
+Available for freelance editing and remote YouTube projects.
+</p>
 
-<div class="contact-links">
-
-<a href="mailto:your@email.com">Email</a>
-<a href="#">WhatsApp</a>
-<a href="#">LinkedIn</a>
-
-</div>
+<a href="mailto:your@email.com" class="btn reveal">
+Contact Me
+</a>
 
 </section>
 
 <script>
 
-/* PAGE LOADER */
+/* LOADER */
 
 window.addEventListener("load",()=>{
 setTimeout(()=>{
-document.getElementById("loader").classList.add("hidden");
+document.getElementById("loader").style.opacity="0";
+setTimeout(()=>{document.getElementById("loader").style.display="none";},1000);
 },1200);
 });
 
-/* CURSOR SPOTLIGHT */
+/* CURSOR LIGHT */
 
-const spotlight=document.querySelector(".spotlight");
-
-document.addEventListener("mousemove",e=>{
-spotlight.style.setProperty("--x",e.clientX+"px");
-spotlight.style.setProperty("--y",e.clientY+"px");
+document.addEventListener("mousemove",(e)=>{
+document.body.style.setProperty('--x', e.clientX + 'px');
+document.body.style.setProperty('--y', e.clientY + 'px');
 });
 
-/* AUTO PLAY VIDEOS ON SCROLL */
+/* REVEAL */
 
-const scrollVideos=document.querySelectorAll(".scroll-video");
-
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.src=entry.target.dataset.src;
+function reveal(){
+let reveals=document.querySelectorAll(".reveal");
+for(let i=0;i<reveals.length;i++){
+let windowHeight=window.innerHeight;
+let elementTop=reveals[i].getBoundingClientRect().top;
+if(elementTop < windowHeight - 120){
+reveals[i].classList.add("active");
 }
-});
-},{threshold:0.6});
-
-scrollVideos.forEach(video=>{
-observer.observe(video);
-});
-
-/* CINEMATIC REVEAL */
-
-const reveals=document.querySelectorAll(".reveal-video");
-
-const revealObserver=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("active");
 }
-});
-},{threshold:0.3});
+}
 
-reveals.forEach(el=>{
-revealObserver.observe(el);
+window.addEventListener("scroll",reveal);
+
+/* HERO SCROLL */
+
+const heroVideo=document.querySelector(".hero-video");
+
+window.addEventListener("scroll",()=>{
+let scroll=window.scrollY;
+let scale=1+scroll*0.0005;
+let opacity=1-scroll*0.001;
+
+if(opacity<0.3){opacity=0.3;}
+
+heroVideo.style.transform=`translate(-50%,-50%) scale(${scale})`;
+heroVideo.style.opacity=opacity;
+});
+
+/* VIDEO HOVER */
+
+const cards=document.querySelectorAll(".video-card");
+
+cards.forEach(card=>{
+const iframe=card.querySelector("iframe");
+const original=iframe.src;
+const hover=iframe.dataset.src;
+
+card.addEventListener("mouseenter",()=>{iframe.src=hover;});
+card.addEventListener("mouseleave",()=>{iframe.src=original;});
 });
 
 </script>
