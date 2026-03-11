@@ -2,6 +2,8 @@
 
 
 
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,40 +37,25 @@ scroll-behavior:smooth;
 
 #loader{
 position:fixed;
-top:0;
-left:0;
 width:100%;
 height:100%;
-background:#070707;
+background:black;
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
 z-index:9999;
-transition:opacity 1s ease;
+transition:opacity .8s;
 }
 
 #loader h1{
-font-size:42px;
-letter-spacing:3px;
-opacity:.9;
+font-size:60px;
+letter-spacing:8px;
 }
 
-/* CURSOR SPOTLIGHT */
-
-body::before{
-content:"";
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-background:radial-gradient(
-600px circle at var(--x) var(--y),
-rgba(255,255,255,0.06),
-transparent 40%
-);
-z-index:1;
+#loader p{
+opacity:.6;
+margin-top:10px;
 }
 
 /* NAVBAR */
@@ -110,7 +97,7 @@ position:relative;
 overflow:hidden;
 }
 
-.hero-video{
+.hero iframe{
 position:absolute;
 top:50%;
 left:50%;
@@ -119,9 +106,8 @@ height:67.5vw;
 min-height:100vh;
 min-width:177vh;
 transform:translate(-50%,-50%);
-pointer-events:none;
 opacity:.35;
-transition:transform .4s ease-out,opacity .4s ease-out;
+pointer-events:none;
 }
 
 .hero-content{
@@ -129,9 +115,31 @@ z-index:2;
 max-width:700px;
 }
 
-.hero h1{
-font-size:80px;
-letter-spacing:-2px;
+/* CINEMATIC TITLE */
+
+.cinematic-title span{
+display:inline-block;
+opacity:0;
+transform:translateY(40px);
+animation:titleReveal .8s forwards;
+}
+
+.cinematic-title span:nth-child(1){animation-delay:.1s}
+.cinematic-title span:nth-child(2){animation-delay:.15s}
+.cinematic-title span:nth-child(3){animation-delay:.2s}
+.cinematic-title span:nth-child(4){animation-delay:.25s}
+.cinematic-title span:nth-child(5){animation-delay:.3s}
+.cinematic-title span:nth-child(6){animation-delay:.35s}
+.cinematic-title span:nth-child(7){animation-delay:.4s}
+.cinematic-title span:nth-child(8){animation-delay:.45s}
+.cinematic-title span:nth-child(9){animation-delay:.5s}
+.cinematic-title span:nth-child(10){animation-delay:.55s}
+
+@keyframes titleReveal{
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 .hero p{
@@ -148,6 +156,7 @@ background:white;
 color:black;
 text-decoration:none;
 font-weight:600;
+transition:transform .2s;
 }
 
 /* SECTION */
@@ -163,151 +172,70 @@ margin-bottom:60px;
 
 /* SHOWREEL */
 
-.showreel iframe{
+.showreel-player iframe{
 width:100%;
-height:500px;
-border-radius:12px;
+height:520px;
+border-radius:14px;
 border:0;
 }
 
-.showreel-description{
-margin-top:20px;
-max-width:700px;
-opacity:.8;
-font-size:15px;
-line-height:1.7;
-}
+/* CLIENTS */
 
-/* TRUSTED */
-
-.trusted-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-gap:20px;
-}
-
-.trusted-box{
-background:#111;
-padding:30px;
-border-radius:12px;
-transition:.3s;
-}
-
-.trusted-box:hover{
-transform:translateY(-6px);
-background:#151515;
-}
-
-/* VIDEO GRID */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(400px,1fr));
+.clients-grid{
+display:flex;
 gap:40px;
+flex-wrap:wrap;
 }
 
-/* VIDEO CARDS */
+.client{
+background:#111;
+padding:20px 30px;
+border-radius:12px;
+}
+
+/* NETFLIX CAROUSEL */
+
+.carousel{
+display:flex;
+gap:30px;
+overflow-x:auto;
+scroll-behavior:smooth;
+}
+
+.carousel::-webkit-scrollbar{
+display:none;
+}
+
+.video-card{
+min-width:380px;
+transition:transform .4s ease;
+cursor:pointer;
+}
+
+.video-card:hover{
+transform:scale(1.08);
+}
 
 .video-wrapper{
-position:relative;
-overflow:hidden;
 border-radius:12px;
+overflow:hidden;
 }
 
 .video-wrapper iframe{
 width:100%;
-height:260px;
+height:220px;
 border:0;
 pointer-events:none;
-transition:transform .6s ease;
-}
-
-.video-card:hover iframe{
-transform:scale(1.08);
-}
-
-.play-icon{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-size:42px;
-background:rgba(0,0,0,0.5);
-padding:14px 20px;
-border-radius:50%;
-opacity:.8;
-transition:.4s;
-}
-
-.video-card:hover .play-icon{
-opacity:1;
-transform:translate(-50%,-50%) scale(1.2);
 }
 
 .video-info{
-margin-top:12px;
-}
-
-.video-info h3{
-font-size:18px;
-}
-
-.video-info p{
-font-size:14px;
-opacity:.7;
-}
-
-/* APPROACH */
-
-.hire-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:20px;
-}
-
-.hire-box{
-background:#111;
-padding:30px;
-border-radius:12px;
-}
-
-/* EXPERIENCE */
-
-.timeline{
-display:grid;
-gap:30px;
-}
-
-.timeline div{
-background:#111;
-padding:30px;
-border-radius:12px;
-}
-
-/* TOOLS */
-
-.tools{
-display:flex;
-flex-wrap:wrap;
-gap:14px;
-}
-
-.tools span{
-background:#1a1a1a;
-padding:10px 18px;
-border-radius:20px;
-font-size:14px;
+margin-top:10px;
 }
 
 /* CONTACT */
 
 .contact{
 text-align:center;
-}
-
-.contact p{
-margin:20px 0;
-opacity:.7;
 }
 
 /* REVEAL */
@@ -323,11 +251,71 @@ opacity:1;
 transform:translateY(0);
 }
 
+/* CURSOR GLOW */
+
+.cursor-glow{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,rgba(255,255,255,0.12),transparent);
+pointer-events:none;
+mix-blend-mode:overlay;
+transform:translate(-50%,-50%);
+z-index:999;
+}
+
+/* FULLSCREEN VIDEO */
+
+#videoModal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+pointer-events:none;
+transition:.4s;
+z-index:2000;
+}
+
+#videoModal.active{
+opacity:1;
+pointer-events:auto;
+}
+
+#videoModal iframe{
+width:80%;
+height:80%;
+border:0;
+}
+
+#closeVideo{
+position:absolute;
+top:40px;
+right:60px;
+font-size:30px;
+cursor:pointer;
+}
+
+/* MOBILE */
+
 @media(max-width:768px){
 
-.hero h1{font-size:44px;}
-.grid{grid-template-columns:1fr;}
-.showreel iframe{height:300px;}
+.carousel{
+gap:20px;
+}
+
+.video-card{
+min-width:280px;
+}
+
+.hero iframe{
+display:none;
+}
 
 }
 
@@ -336,8 +324,11 @@ transform:translateY(0);
 
 <body>
 
+<!-- LOADER -->
+
 <div id="loader">
-<h1>Jovi Andra</h1>
+<h1>JOVI ANDRA</h1>
+<p>CINEMATIC VIDEO EDITOR</p>
 </div>
 
 <nav>
@@ -346,19 +337,23 @@ transform:translateY(0);
 <a href="#contact">Contact</a>
 </nav>
 
+<!-- HERO -->
+
 <section class="hero">
 
-<iframe class="hero-video"
-src="https://player.vimeo.com/video/1172508905?background=1&autoplay=1&loop=1&muted=1">
-</iframe>
+<iframe src="https://player.vimeo.com/video/1172508905?background=1&autoplay=1&loop=1&muted=1"></iframe>
 
 <div class="hero-content">
 
-<h1>Jovi Andra</h1>
+<h1 class="cinematic-title">
+<span>J</span><span>O</span><span>V</span><span>I</span>
+<span>&nbsp;</span>
+<span>A</span><span>N</span><span>D</span><span>R</span><span>A</span>
+</h1>
 
 <p>
-Cinematic Video Editor  
-Specializing in Story-Driven YouTube Content & Viewer Retention
+Cinematic Video Editor • Motion Designer  
+Specializing in Story-Driven YouTube Content
 </p>
 
 <a href="#showreel" class="btn">Watch Showreel</a>
@@ -367,90 +362,76 @@ Specializing in Story-Driven YouTube Content & Viewer Retention
 
 </section>
 
+<!-- SHOWREEL -->
+
 <section id="showreel">
 
-<h2 class="section-title reveal">Featured Showreel</h2>
+<h2 class="section-title reveal">Showreel</h2>
 
-<div class="showreel reveal">
+<div class="showreel-player reveal">
 
 <iframe src="https://player.vimeo.com/video/1172481792"></iframe>
-
-<p class="showreel-description">
-A cinematic showcase of my editing style including motion graphics,
-story-driven pacing and long-form YouTube storytelling.
-</p>
 
 </div>
 
 </section>
+
+<!-- EXPERIENCE -->
 
 <section>
 
 <h2 class="section-title reveal">Trusted Experience</h2>
 
-<div class="trusted-grid reveal">
+<div class="clients-grid reveal">
 
-<div class="trusted-box">
-<h3>Kompas TV</h3>
-<p>Graphic Designer working on broadcast visuals and television graphics.</p>
-</div>
-
-<div class="trusted-box">
-<h3>Global TV</h3>
-<p>Script Writer contributing to television storytelling and production.</p>
-</div>
-
-<div class="trusted-box">
-<h3>Freelance Editor</h3>
-<p>Collaborating remotely with creators on cinematic video projects.</p>
-</div>
+<div class="client">Kompas TV</div>
+<div class="client">Global TV</div>
+<div class="client">YouTube Creators</div>
 
 </div>
 
 </section>
+
+<!-- SELECTED WORK -->
 
 <section id="work">
 
 <h2 class="section-title reveal">Selected Work</h2>
 
-<div class="grid reveal">
+<div class="carousel reveal">
 
-<div class="video-card">
-
-<div class="video-wrapper">
-
-<iframe
-data-src="https://player.vimeo.com/video/1172478933?autoplay=1&muted=1&loop=1"
-src="https://player.vimeo.com/video/1172478933">
-</iframe>
-
-<div class="play-icon">▶</div>
-
-</div>
-
-<div class="video-info">
-<h3>YouTube Long Form Editing</h3>
-<p>Motion Design / Visual Storytelling</p>
-</div>
-
-</div>
-
-<div class="video-card">
+<div class="video-card" data-video="https://player.vimeo.com/video/1172542673">
 
 <div class="video-wrapper">
 
 <iframe
-data-src="https://player.vimeo.com/video/1172481792?autoplay=1&muted=1&loop=1"
-src="https://player.vimeo.com/video/1172481792">
+data-src="https://player.vimeo.com/video/1172542673?autoplay=1&muted=1&loop=1"
+src="https://player.vimeo.com/video/1172542673">
 </iframe>
-
-<div class="play-icon">▶</div>
 
 </div>
 
 <div class="video-info">
-<h3>Cinematic Motion Graphics</h3>
-<p>Story-Driven Editing</p>
+<h3>TVC Global TV</h3>
+<p>Television Commercial Editing</p>
+</div>
+
+</div>
+
+<div class="video-card" data-video="https://player.vimeo.com/video/1172508905">
+
+<div class="video-wrapper">
+
+<iframe
+data-src="https://player.vimeo.com/video/1172508905?autoplay=1&muted=1&loop=1"
+src="https://player.vimeo.com/video/1172508905">
+</iframe>
+
+</div>
+
+<div class="video-info">
+<h3>Cinematic Video YouTube</h3>
+<p>Story-Driven YouTube Editing</p>
 </div>
 
 </div>
@@ -458,81 +439,136 @@ src="https://player.vimeo.com/video/1172481792">
 </div>
 
 </section>
+
+<!-- CONTACT -->
 
 <section id="contact" class="contact">
 
 <h2 class="section-title reveal">Let's Work Together</h2>
 
 <p class="reveal">
-Available for freelance editing and remote YouTube projects.
+Available for freelance editing and remote video projects.
 </p>
 
-<a href="mailto:your@email.com" class="btn reveal">
+<a href="mailto:jiro.primary@gmail.com" class="btn reveal">
 Contact Me
 </a>
 
 </section>
 
+<!-- FULLSCREEN VIDEO -->
+
+<div id="videoModal">
+<span id="closeVideo">✕</span>
+<iframe id="modalPlayer"></iframe>
+</div>
+
 <script>
 
 /* LOADER */
 
-window.addEventListener("load",()=>{
+window.addEventListener("load",function(){
+
 setTimeout(()=>{
 document.getElementById("loader").style.opacity="0";
-setTimeout(()=>{document.getElementById("loader").style.display="none";},1000);
-},1200);
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+},800);
+},1500);
+
 });
 
-/* CURSOR LIGHT */
-
-document.addEventListener("mousemove",(e)=>{
-document.body.style.setProperty('--x', e.clientX + 'px');
-document.body.style.setProperty('--y', e.clientY + 'px');
-});
-
-/* REVEAL */
+/* SCROLL REVEAL */
 
 function reveal(){
+
 let reveals=document.querySelectorAll(".reveal");
+
 for(let i=0;i<reveals.length;i++){
+
 let windowHeight=window.innerHeight;
 let elementTop=reveals[i].getBoundingClientRect().top;
+
 if(elementTop < windowHeight - 120){
 reveals[i].classList.add("active");
 }
+
 }
+
 }
 
 window.addEventListener("scroll",reveal);
 
-/* HERO SCROLL */
+/* CURSOR GLOW */
 
-const heroVideo=document.querySelector(".hero-video");
+const glow=document.createElement("div");
+glow.classList.add("cursor-glow");
+document.body.appendChild(glow);
 
-window.addEventListener("scroll",()=>{
-let scroll=window.scrollY;
-let scale=1+scroll*0.0005;
-let opacity=1-scroll*0.001;
-
-if(opacity<0.3){opacity=0.3;}
-
-heroVideo.style.transform=`translate(-50%,-50%) scale(${scale})`;
-heroVideo.style.opacity=opacity;
+document.addEventListener("mousemove",e=>{
+glow.style.left=e.clientX+"px";
+glow.style.top=e.clientY+"px";
 });
 
-/* VIDEO HOVER */
+/* MAGNETIC BUTTON */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+
+btn.addEventListener("mousemove",(e)=>{
+
+const rect=btn.getBoundingClientRect();
+const x=e.clientX-rect.left;
+const y=e.clientY-rect.top;
+
+btn.style.transform=`translate(${(x-rect.width/2)/6}px,
+${(y-rect.height/2)/6}px)`;
+
+});
+
+btn.addEventListener("mouseleave",()=>{
+btn.style.transform="translate(0,0)";
+});
+
+});
+
+/* NETFLIX HOVER PREVIEW */
 
 const cards=document.querySelectorAll(".video-card");
 
 cards.forEach(card=>{
+
 const iframe=card.querySelector("iframe");
 const original=iframe.src;
 const hover=iframe.dataset.src;
 
-card.addEventListener("mouseenter",()=>{iframe.src=hover;});
-card.addEventListener("mouseleave",()=>{iframe.src=original;});
+card.addEventListener("mouseenter",()=>{
+iframe.src=hover;
 });
+
+card.addEventListener("mouseleave",()=>{
+iframe.src=original;
+});
+
+});
+
+/* FULLSCREEN PLAYER */
+
+const modal=document.getElementById("videoModal");
+const modalPlayer=document.getElementById("modalPlayer");
+
+cards.forEach(card=>{
+
+card.addEventListener("click",()=>{
+modal.classList.add("active");
+modalPlayer.src=card.dataset.video+"?autoplay=1";
+});
+
+});
+
+document.getElementById("closeVideo").onclick=()=>{
+modal.classList.remove("active");
+modalPlayer.src="";
+};
 
 </script>
 
